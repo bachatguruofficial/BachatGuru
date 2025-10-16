@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BachatGuru - User Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="logo">BachatGuru</div>
+        <div class="nav-links">
+            <a href="index.html">Privacy Policy</a>
+            <a href="help.html">Help & Support</a>
+            <a href="user-guide.html" class="active">User Guide</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="header">
+            <h1>User Guide</h1>
+            <p>Your comprehensive guide to BachatGuru</p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-rocket"></i> Getting Started</h2>
+            <div class="step-guide">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>Download and install BachatGuru from the app store.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>Create an account using your email for secure data backup.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>Set your preferred currency and financial goals from the settings menu.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-plus-circle"></i> Adding Transactions</h2>
+            <div class="step-guide">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>Tap the "+" button on the home screen to open the transaction menu.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>Select whether it's an 'Income' or 'Expense'.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>Enter the amount, choose a category, and add an optional description.</div>
+                </div>
+                 <div class="step">
+                    <div class="step-number">4</div>
+                    <div>Tap 'Save' to record the transaction.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-hand-holding-usd"></i> Managing Loans</h2>
+            <div class="step-guide">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>Navigate to the 'Loans' section from the main menu.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>Tap 'Add Loan' and specify whether you've given or received the loan.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>Fill in the details, including the amount and the other party involved.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-chart-pie"></i> Generating Reports</h2>
+            <div class="step-guide">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>Go to the 'Reports' section to see a summary of your finances.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>Filter reports by time period (e.g., 7 days, 30 days, 1 year).</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>View detailed charts and graphs of your spending and earning patterns.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3><i class="fas fa-plus-circle"></i> How do I manage loan records?</h3>
+                <div class="faq-answer">
+                    <p>Navigate to the Loans section, tap "Add Loan" and fill in the required details. You can track both given and received loans.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-plus-circle"></i> How do I generate financial reports?</h3>
+                <div class="faq-answer">
+                    <p>Go to the Reports section, select your preferred time period (7 days, 30 days, etc.), and view your customized financial analysis.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-plus-circle"></i> How secure is my financial data?</h3>
+                <div class="faq-answer">
+                    <p>Your data is protected with end-to-end encryption and stored locally on your device. We prioritize your privacy and security.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-nav">
+            <a href="index.html">Privacy Policy</a>
+            <a href="help.html">Help & Support</a>
+            <a href="user-guide.html">User Guide</a>
+            <a href="submit-feedback.html">Submit Feedback</a>
+        </div>
+
+        <div class="last-updated">
+            <i class="fas fa-clock"></i> Last updated: October 14, 2025
+        </div>
+    </div>
+
+    <script>
+        // Sticky Navigation
+        const nav = document.querySelector('.main-nav');
+        const navTop = nav.offsetTop;
+
+        function stickyNav() {
+            if (window.scrollY >= navTop) {
+                nav.classList.add('sticky');
+            } else {
+                nav.classList.remove('sticky');
+            }
+        }
+
+        window.addEventListener('scroll', stickyNav);
+
+        // Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const header = item.querySelector('h3');
+            const answer = item.querySelector('.faq-answer');
+
+            header.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.display = 'none';
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    answer.style.display = 'block';
+                } else {
+                    answer.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

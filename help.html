@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BachatGuru - Help & Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="logo">BachatGuru</div>
+        <div class="nav-links">
+            <a href="index.html">Privacy Policy</a>
+            <a href="help.html" class="active">Help & Support</a>
+            <a href="user-guide.html">User Guide</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="header">
+            <h1>Help & Support</h1>
+            <p>We're here to help you manage your finances better</p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-bolt"></i> Quick Actions</h2>
+            <div class="quick-actions">
+                <div class="action-card">
+                    <a href="report-bug.html">
+                        <i class="fas fa-bug"></i>
+                        <h3>Report a Bug</h3>
+                        <p>Found an issue? Let us know</p>
+                    </a>
+                </div>
+                <div class="action-card">
+                    <a href="submit-feedback.html">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Submit Feedback</h3>
+                        <p>Share your suggestions</p>
+                    </a>
+                </div>
+                <div class="action-card">
+                    <a href="user-guide.html">
+                        <i class="fas fa-book"></i>
+                        <h3>User Guide</h3>
+                        <p>Learn app basics</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-tools"></i> Troubleshooting</h2>
+            
+            <div class="troubleshooting-item">
+                <h3>App Not Responding</h3>
+                <div class="troubleshooting-answer">
+                    <div class="step-guide">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>Force close the app</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>Clear app cache (Settings > Apps > BachatGuru > Clear Cache)</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>Restart the app</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="troubleshooting-item">
+                <h3>Data Sync Issues</h3>
+                <div class="troubleshooting-answer">
+                    <p>Check your internet connection and try manually syncing from the Profile section.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-headset"></i> Contact Support</h2>
+            <p>Need more help? We're here for you!</p>
+            
+            <div class="contact-option">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h3>Email Support</h3>
+                    <p>bachatguruofficial@gmail.com</p>
+                    <p>Response time: Within 24 hours</p>
+                </div>
+            </div>
+
+            <div class="contact-option">
+                <i class="fab fa-whatsapp"></i>
+                <div>
+                    <h3>WhatsApp Channel</h3>
+                    <p>Join for updates and direct support</p>
+                </div>
+            </div>
+
+            <a href="https://whatsapp.com/channel/0029VbBICIM0G0XYXCnX532b" target="_blank" class="button">
+                <i class="fab fa-whatsapp"></i> Join our WhatsApp Channel
+            </a>
+        </div>
+
+        <div class="footer-nav">
+            <a href="index.html">Privacy Policy</a>
+            <a href="help.html">Help & Support</a>
+            <a href="user-guide.html">User Guide</a>
+            <a href="submit-feedback.html">Submit Feedback</a>
+        </div>
+
+        <div class="last-updated">
+            <i class="fas fa-clock"></i> Last updated: October 14, 2025
+        </div>
+    </div>
+
+    <script>
+        // Sticky Navigation
+        const nav = document.querySelector('.main-nav');
+        const navTop = nav.offsetTop;
+
+        function stickyNav() {
+            if (window.scrollY >= navTop) {
+                nav.classList.add('sticky');
+            } else {
+                nav.classList.remove('sticky');
+            }
+        }
+
+        window.addEventListener('scroll', stickyNav);
+
+        // Accordion
+        const troubleshootingItems = document.querySelectorAll('.troubleshooting-item');
+
+        troubleshootingItems.forEach(item => {
+            const header = item.querySelector('h3');
+            const answer = item.querySelector('.troubleshooting-answer');
+
+            header.addEventListener('click', () => {
+                // Close other open items
+                troubleshootingItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.troubleshooting-answer').style.display = 'none';
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    answer.style.display = 'block';
+                } else {
+                    answer.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

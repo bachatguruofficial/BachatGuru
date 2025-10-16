@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BachatGuru - Submit Feedback</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="logo">BachatGuru</div>
+        <div class="nav-links">
+            <a href="index.html">Privacy Policy</a>
+            <a href="help.html">Help & Support</a>
+            <a href="user-guide.html">User Guide</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="header">
+            <h1>Submit Feedback</h1>
+            <p>We'd love to hear from you!</p>
+        </div>
+
+        <div class="section">
+            <h2>Your Feedback Matters</h2>
+            <p>Your insights help us improve BachatGuru. Whether you have a suggestion, a feature request, or general feedback, please share it with us.</p>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="69ea0795-51a6-4ce0-a6c2-3ace0ed2ab2e">
+                <div class="form-group">
+                    <label for="feedback-type">Feedback Type</label>
+                    <select id="feedback-type" name="feedback-type" required>
+                        <option value="suggestion">Suggestion</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="feature-request">Feature Request</option>
+                        <option value="general">General Feedback</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="So we can get back to you" required>
+                </div>
+                <div class="form-group">
+                    <label for="feedback-message">Message</label>
+                    <textarea id="feedback-message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+                </div>
+                <button type="submit" class="button">Submit Feedback</button>
+            </form>
+            <div id="result" class="form-group" style="margin-top: 20px;"></div>
+        </div>
+
+        <div class="footer-nav">
+            <a href="index.html">Privacy Policy</a>
+            <a href="help.html">Help & Support</a>
+            <a href="user-guide.html">User Guide</a>
+            <a href="submit-feedback.html">Submit Feedback</a>
+        </div>
+
+        <div class="last-updated">
+            <i class="fas fa-clock"></i> Last updated: October 14, 2025
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        const result = document.getElementById('result');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            result.innerHTML = "Please wait..."
+            result.style.color = "#555";
+
+            fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        result.innerHTML = "Form submitted successfully!";
+                        result.style.color = "var(--success-color)";
+                    } else {
+                        console.log(response);
+                        result.innerHTML = json.message;
+                        result.style.color = "#E74C3C";
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    result.innerHTML = "Something went wrong!";
+                    result.style.color = "#E74C3C";
+                })
+                .then(function() {
+                    form.reset();
+                    setTimeout(() => {
+                        result.style.display = "none";
+                    }, 3000);
+                });
+        });
+    </script>
+</body>
+</html>
